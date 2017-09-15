@@ -60,6 +60,24 @@ $(function() {
       * hiding/showing of the menu element.
       */
 
+      // Create a custom Matcher in order to test if <body> has the class 'menu-hidden'
+      // attribute addMatchers to: https://github.com/velesin/jasmine-jquery/blob/0fb5aead85e25ddd21f9533cff48b06f035cf032/lib/jasmine-jquery.js#L369-L377
+      beforeEach(function () {
+        jasmine.addMatchers({
+          toHaveClass: function () {
+            return {
+              compare: function (actual, className) {
+                return { pass: $(actual).hasClass(className) }
+              }
+            }
+          },
+        });
+      });
+
+      it('has a menu hidden by default', function() {
+        expect($('body')).toHaveClass('menu-hidden');
+      });
+
       /* TODO: Write a test that ensures the menu changes
       * visibility when the menu icon is clicked. This test
       * should have two expectations: does the menu display when
