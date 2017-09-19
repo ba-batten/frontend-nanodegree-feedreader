@@ -59,8 +59,6 @@ $(function() {
       * the CSS to determine how we're performing the
       * hiding/showing of the menu element.
       */
-
-      // Create a custom Matcher in order to test if <body> has the class 'menu-hidden'
       // attribute addMatchers to: https://github.com/velesin/jasmine-jquery/blob/0fb5aead85e25ddd21f9533cff48b06f035cf032/lib/jasmine-jquery.js#L369-L377
       beforeEach(function () {
         jasmine.addMatchers({
