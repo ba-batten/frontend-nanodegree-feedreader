@@ -110,14 +110,12 @@ $(function() {
 
       /* Create feed that loads asynchrounously */
       beforeEach(function(done) {
-        loadFeed(0, function() {
-          done();
-        });
+        loadFeed(0, done);
       });
 
       /* Make sure that the feed is not empty */
       it('At least one .entry element present within the .feed container', function(done) {
-        var entryArray = $('.entry');
+        var entryArray = $('.feed .entry');
         expect(entryArray.length).toBeGreaterThan(0);
         done();
       });
@@ -136,13 +134,12 @@ $(function() {
         loadFeed(1, function() {
           firstFeed = $('.feed').html();
           loadFeed(2, done);
-          done();
         });
       });
 
       /* Test feeds for change in content */
       it('Content changes when a new feed is loaded', function(done) {
-        expect($('.feed')).not.toEqual(firstFeed);
+        expect($('.feed').html()).not.toEqual(firstFeed);
         done();
       });
     });
