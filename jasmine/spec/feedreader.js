@@ -112,7 +112,7 @@ $(function() {
         });
       });
 
-      it('There is at least one .entry element within the .feed container', function(done) {
+      it('At least one .entry element present within the .feed container', function(done) {
         var entryArray = $('.entry');
         expect(entryArray.length).toBeGreaterThan(0);
         done();
@@ -120,9 +120,24 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
+      /* TODO: Write a test that ensures when a new feed is loaded
+      * by the loadFeed function that the content actually changes.
+      * Remember, loadFeed() is asynchronous.
+      */
+      var firstFeed;
 
-    /* TODO: Write a test that ensures when a new feed is loaded
-    * by the loadFeed function that the content actually changes.
-    * Remember, loadFeed() is asynchronous.
-    */
+      beforeEach(function(done) {
+        loadFeed(1, function() {
+          firstFeed = $('.feed').html();
+          loadFeed(2, done);
+          done();
+        });
+      });
+
+      it('Content changes when a new feed is loaded', function(done) {
+        expect($('.feed')).not.toEqual(firstFeed);
+        done();
+      });
+    });
 }());
