@@ -65,9 +65,9 @@ $(function() {
           toHaveClass: function () {
             return {
               compare: function (actual, className) {
-                return { pass: $(actual).hasClass(className) }
+                return { pass: $(actual).hasClass(className) };
               }
-            }
+            };
           },
         });
       });
