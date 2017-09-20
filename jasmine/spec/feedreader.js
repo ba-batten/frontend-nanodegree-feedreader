@@ -106,13 +106,23 @@ $(function() {
       * Remember, loadFeed() is asynchronous so this test will require
       * the use of Jasmine's beforeEach and asynchronous done() function.
       */
+      beforeEach(function(done) {
+        loadFeed(0, function() {
+          done();
+        });
+      });
 
-      /* TODO: Write a new test suite named "New Feed Selection" */
-
-      /* TODO: Write a test that ensures when a new feed is loaded
-      * by the loadFeed function that the content actually changes.
-      * Remember, loadFeed() is asynchronous.
-      */
-
+      it('There is at least one .entry element within the .feed container', function(done) {
+        var entryArray = $('.entry');
+        expect(entryArray.length).toBeGreaterThan(0);
+        done();
+      });
     });
+
+    /* TODO: Write a new test suite named "New Feed Selection" */
+
+    /* TODO: Write a test that ensures when a new feed is loaded
+    * by the loadFeed function that the content actually changes.
+    * Remember, loadFeed() is asynchronous.
+    */
 }());
